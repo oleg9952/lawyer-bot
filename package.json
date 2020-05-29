@@ -6,7 +6,7 @@
   "scripts": {
     "init:client": "cd client && npm i",
     "init:server": "cd server && npm i",
-    "init": "",
+    "init": "concurrently \"npm run init:client\" \"npm run init:server\"",
     "dev:client": "cd client && npm start",
     "dev:server": "cd server && npm run dev",
     "build:client": "cd client && npm run build",
