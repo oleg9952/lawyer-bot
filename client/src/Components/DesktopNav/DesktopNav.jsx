@@ -8,21 +8,13 @@ const DesktopNav = () => {
     const [ nav, setNav ] = useState(false)
     const { pathname } = useLocation()
 
-    const handlePage = (path) => {
-        if (path === '/bots') {
-            setNav(false)
-        } else {
-            setNav(true)
-        }
-    }
-
     useEffect(() => {
         if (pathname === '/bots') {
             setNav(false)
         } else {
             setNav(true)
         }
-    }, [])
+    }, [pathname])
 
     return (
         <div 
@@ -36,7 +28,6 @@ const DesktopNav = () => {
                     <Link
                         key={path}
                         to={path}
-                        onClick={handlePage.bind(this, path)}
                     >
                         { name }
                     </Link>
