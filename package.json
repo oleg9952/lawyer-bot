@@ -26,9 +26,6 @@
   },
   "homepage": "https://github.com/oleg9952/lawyer-bot#readme",
   "dependencies": {
-    "concurrently": "^5.2.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "concurrently": "^5.2.0"
   }
 }
