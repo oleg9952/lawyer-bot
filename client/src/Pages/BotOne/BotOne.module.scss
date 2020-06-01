@@ -1,0 +1,15 @@
+@use '../../Utils/mixins.scss' as mixins;
+
+.botone {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mixins.imgBG('/assets/botone/botone_page_bg.jpg');
+    h1 {
+        text-align: center;
+        font-size: 50px;
+        color: #fff;
+        font-weight: bold;
+    }
+}

@@ -3,7 +3,6 @@
 
 .header {
     min-height: 100vh;
-    background-color: orange;
     position: relative;
     color: #000;
     @include mixins.imgBG('/assets/home/header/header_bg.jpg');

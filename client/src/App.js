@@ -4,13 +4,10 @@ import { CSSTransition } from 'react-transition-group'
 import routes from './Routes'
 import './App.scss'
 
-import DesktopNav from './Components/DesktopNav/DesktopNav'
-
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* <DesktopNav /> */}
         {routes.map(({ path, Component }) => (
           <Route
             key={path}
