@@ -1,14 +1,22 @@
 import React from 'react'
 import style from './Home.module.scss'
-
-import DesktopNav from '../../Components/DesktopNav/DesktopNav'
+import Header from './Header/Header'
+import BotOne from './BotOne/BotOne'
+import BotTwo from './BotTwo/BotTwo'
 
 const Home = () => {
     return (
         <div className={style.home}>
-            {/* <DesktopNav /> */}
             <div className={style.home__body}>
-                <h1>Home page</h1>
+                <div className={style.home__section}>
+                    <Header />
+                </div>
+                <div className={style.home__section}>
+                    <BotOne />
+                </div>
+                <div className={style.home__section}>
+                    <BotTwo />
+                </div>
             </div>
         </div>
     )
