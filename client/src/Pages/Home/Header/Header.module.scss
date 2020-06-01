@@ -1,13 +1,53 @@
+@use '../../../Utils/mixins.scss' as mixins;
+@use '../../../Utils/fonts.scss' as fonts;
+
 .header {
     min-height: 100vh;
     background-color: orange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    opacity: 0;
-    transition: 1s;
-    &.active {
+    position: relative;
+    color: #000;
+    @include mixins.imgBG('/assets/home/header/header_bg.jpg');
+    &__body {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        .header__title {
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 0 0 3px #000;
+            color: #ec4949;
+            line-height: 70px;
+            font-family: fonts.$font_pixel;
+            width: 400px;
+            margin: 0 auto 10px;
+            display: block;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: .5s;
+        }
+        .header__subtitle {
+            font-size: 30px;
+            font-family: fonts.$font_subtitle;
+            width: 500px;
+            margin: 0 auto;
+            display: block;
+            color: #e78080;
+            text-shadow: 0 1px 3px #000;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: .5s .2s;
+        }
+    }
+}
+
+.header.active {
+    .header__title,
+    .header__subtitle {
         opacity: 1;
+        transform: translateY(0px);
     }
 }

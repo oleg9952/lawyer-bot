@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ReactPageScroller from 'react-page-scroller'
 import style from './Home.module.scss'
-import {
-    Header,
-    BotOne,
-    BotTwo
-} from './index'
+import Components from './index'
 
 const Home = () => {
     const [ currentPage, setCurrentPage ] = useState(0)
@@ -21,21 +17,13 @@ const Home = () => {
                     pageOnChange={handleSectionSwitch}
                     customPageNumber={currentPage}
                 >
-                    <div className={style.home__section}>
-                        <Header 
-                            currentPage={currentPage}
-                        />
-                    </div>
-                    <div className={style.home__section}>
-                        <BotOne 
-                            currentPage={currentPage}
-                        />
-                    </div>
-                    <div className={style.home__section}>
-                        <BotTwo 
-                            currentPage={currentPage}
-                        />
-                    </div>
+                    {Components.map((Component, index) => (
+                       <div className={style.home__section} key={index}>
+                            <Component 
+                                currentPage={currentPage}
+                            />
+                        </div> 
+                    ))}
                 </ReactPageScroller>
             </div>
         </div>
