@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <DesktopNav />
+        {/* <DesktopNav /> */}
         {routes.map(({ path, Component }) => (
           <Route
             key={path}

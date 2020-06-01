@@ -1,0 +1,12 @@
+.bottwo {
+    min-height: 100vh;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 1s;
+    &.active {
+        opacity: 1;
+    }
+}

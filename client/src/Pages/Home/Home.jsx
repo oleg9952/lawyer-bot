@@ -1,14 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import ReactPageScroller from 'react-page-scroller'
 import style from './Home.module.scss'
-
-import DesktopNav from '../../Components/DesktopNav/DesktopNav'
+import {
+    Header,
+    BotOne,
+    BotTwo
+} from './index'
 
 const Home = () => {
+    const [ currentPage, setCurrentPage ] = useState(0)
+    const handleSectionSwitch = (page) => {
+        if (page === currentPage) return
+        setCurrentPage(page)
+    }
+
     return (
         <div className={style.home}>
-            {/* <DesktopNav /> */}
             <div className={style.home__body}>
-                <h1>Home page</h1>
+                <ReactPageScroller
+                    pageOnChange={handleSectionSwitch}
+                    customPageNumber={currentPage}
+                >
+                    <div className={style.home__section}>
+                        <Header 
+                            currentPage={currentPage}
+                        />
+                    </div>
+                    <div className={style.home__section}>
+                        <BotOne 
+                            currentPage={currentPage}
+                        />
+                    </div>
+                    <div className={style.home__section}>
+                        <BotTwo 
+                            currentPage={currentPage}
+                        />
+                    </div>
+                </ReactPageScroller>
             </div>
         </div>
     )
