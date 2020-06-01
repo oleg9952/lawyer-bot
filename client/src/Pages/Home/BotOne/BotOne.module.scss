@@ -1,13 +1,25 @@
+@use '../../../Utils/mixins.scss' as mixins;
+
 .botone {
     min-height: 100vh;
-    background-color: red;
+    filter: invert(100%);
+    transition: 1s;
+    position: relative;    
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    opacity: 0;
-    transition: 1s;
-    &.active {
-        opacity: 1;
+    &__bg {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        @include mixins.imgBG('/assets/home/botone/botone_bg.jpg');
+        filter: brightness(60%);
     }
+}
+
+.botone.active {
+    filter: invert(0%);
 }

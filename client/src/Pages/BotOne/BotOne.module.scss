@@ -1,0 +1,17 @@
+@use '../../Utils/mixins.scss' as mixins;
+@use '../../Utils//colors.scss' as colors;
+
+.botone {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: colors.$cream_white;
+    // @include mixins.imgBG('/assets/botone/botone_page_bg.jpg');
+    h1 {
+        text-align: center;
+        font-size: 50px;
+        color: #000;
+        font-weight: bold;
+    }
+}

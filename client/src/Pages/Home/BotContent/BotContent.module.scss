@@ -1,0 +1,96 @@
+@use '../../../Utils//fonts.scss' as fonts;
+@use '../../../Utils/mixins.scss' as mixins;
+
+.botcontent {
+    position: relative;
+    z-index: 1;
+    width: 1170px;
+    min-height: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    a {
+        text-decoration: none;
+    }
+    &__column:first-child {
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        font-family: fonts.$font_vollkorn;
+        h2 {
+            font-weight: bold;
+            font-size: 30px;
+            display: none;
+        }
+        p {
+            font-style: italic;
+            line-height: 25px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    }
+    &__column:last-child {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 10px;
+        .botcontent__imgs {
+            position: relative;
+            width: 420px;
+            height: 460px;
+        }
+        .botcontent__img {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            display: none;
+        }
+        .botcontent__img:first-child {
+            position: absolute;
+            width: 350px;
+            height: 220px;
+            top: 0;
+            left: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .botcontent__img:last-child {
+            position: absolute;
+            width: 350px;
+            height: 220px;
+            bottom: 0;
+            right: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+}
+
+.botcontent.active {
+    .botcontent__column:first-child {
+        h2 {
+            display: block;
+        }
+        p {
+            display: block;
+        }
+    }
+    .botcontent__column:last-child {
+        .botcontent__img {
+            display: block;
+        }
+    }
+}
+
+.botcontent__column.left {
+    justify-content: flex-start;
+    .botcontent__img:first-child {
+        right: 0;
+        left: auto;
+    }
+    .botcontent__img:last-child {
+        left: 0;
+        right: auto;
+    }
+}
