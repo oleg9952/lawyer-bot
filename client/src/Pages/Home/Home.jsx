@@ -1,22 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import ReactPageScroller from 'react-page-scroller'
 import style from './Home.module.scss'
-import Header from './Header/Header'
-import BotOne from './BotOne/BotOne'
-import BotTwo from './BotTwo/BotTwo'
+import {
+    Header,
+    BotOne,
+    BotTwo
+} from './index'
 
 const Home = () => {
+    const [ currentPage, setCurrentPage ] = useState(0)
+    const handleSectionSwitch = (page) => {
+        if (page === currentPage) return
+        setCurrentPage(page)
+    }
+
     return (
         <div className={style.home}>
             <div className={style.home__body}>
-                <div className={style.home__section}>
-                    <Header />
-                </div>
-                <div className={style.home__section}>
-                    <BotOne />
-                </div>
-                <div className={style.home__section}>
-                    <BotTwo />
-                </div>
+                <ReactPageScroller
+                    pageOnChange={handleSectionSwitch}
+                    customPageNumber={currentPage}
+                >
+                    <div className={style.home__section}>
+                        <Header 
+                            currentPage={currentPage}
+                        />
+                    </div>
+                    <div className={style.home__section}>
+                        <BotOne 
+                            currentPage={currentPage}
+                        />
+                    </div>
+                    <div className={style.home__section}>
+                        <BotTwo 
+                            currentPage={currentPage}
+                        />
+                    </div>
+                </ReactPageScroller>
             </div>
         </div>
     )
