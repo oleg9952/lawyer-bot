@@ -19,6 +19,7 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
+        // ----- STEPPER -----
         case getSteps:
             return state.steps
         case getStepContent:
@@ -38,6 +39,7 @@ export default (state = initState, action) => {
                 ...state,
                 activeStep: state.activeStep = 0
             }
+        // ----- OTHER LOGIC -----
         default:
             return state
     }

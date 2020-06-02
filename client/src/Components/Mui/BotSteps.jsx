@@ -5,7 +5,6 @@ import {
     Step,
     StepLabel,
     Button,
-    Typography,
     Box
 } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
