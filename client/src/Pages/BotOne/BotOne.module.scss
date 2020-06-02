@@ -4,5 +4,22 @@
 .botone {
     min-height: 100vh;
     background-color: colors.$cream_white;
-    // @include mixins.imgBG('/assets/botone/botone_page_bg.jpg');
+    display: grid;
+    grid-template-rows: 108px 1fr 50px;
+    &__content {
+        // background-color: orange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .botone__contentbox {
+            width: 768px;
+            height: calc(100% - 50px);
+            background-color: #fff;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        .botone__contentbox::-webkit-scrollbar {
+            display: none;
+        }
+    }
 }

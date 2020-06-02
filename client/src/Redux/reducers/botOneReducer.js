@@ -10,9 +10,9 @@ const {
 const initState = {
     // ----- STEPPER -----
     steps: [
-        'Select master blaster campaign settings', 
-        'Create an ad group', 
-        'Create an ad'
+        'Оберіть себе', 
+        'Оберіть, будь ласка, ким ви є', 
+        'Результат'
     ],
     activeStep: 0
 }
