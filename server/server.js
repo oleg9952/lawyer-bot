@@ -14,6 +14,8 @@ server.use(express.urlencoded({ extended: false }))
 server.use(express.static(path.join(__dirname, '../client/build')))
 server.use('*', (req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')))
 
+server.use('api', require('./routes/botOne'))
+
 server.use((err, req, res, next) => {
     res.status(500).send({ error: err })
 })
