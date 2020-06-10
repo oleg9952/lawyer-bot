@@ -17,11 +17,15 @@ const {
 
 module.exports.getData = (apiData, { step, target }) => {
     switch (step) {
+        case 0:
+            return {
+                final: false,
+                step: step,
+                options: apiData.static.person
+            }
         case 1:
-            return apiData.static.person
-        case 2:
             return apiData.static.persons
-        case 3:
+        case 2:
             let result = null
             if (
                 target === osobaZInvalidnistiu ||

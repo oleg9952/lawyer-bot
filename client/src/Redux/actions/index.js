@@ -2,7 +2,12 @@ export const botOneActions = {
     // ----- STEPPER -----
     handleNext: 'HANDLE_NEXT',
     handleBack: 'HANDLE_BACK',
-    handleReset: 'HANDLE_RESET'
+    handleReset: 'HANDLE_RESET',
+    // ----- API -----
+    setSelection: 'SET_SELECTION',
+    getOptions: 'GET_OPTIONS',
+    // ----- ERROR -----
+    handleError: 'HANDLE_ERROR'
 }
 
 export const homeActions = {

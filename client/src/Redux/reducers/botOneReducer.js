@@ -2,7 +2,10 @@ import { botOneActions } from '../actions'
 const {
     handleNext,
     handleBack,
-    handleReset
+    handleReset,
+    setSelection,
+    getOptions,
+    handleError
 } = botOneActions
 
 const initState = {
@@ -13,47 +16,8 @@ const initState = {
         'Результат'
     ],
     activeStep: 0,
-    currentOptions: {
-        final: false,
-        step: 1,
-        options: [
-            {
-                "id": 1,
-                "type": "Я громадянин України",
-                "step": 1
-            },
-            {
-                "id": 2,
-                "type": "Я іноземець",
-                "step": 1
-            },
-            {
-                "id": 3,
-                "type": "Особа без громадянства",
-                "step": 1
-            },
-            {
-                "id": 4,
-                "type": "Представник підприємства, установи, організації",
-                "step": 1
-            },
-            {
-                "id": 5,
-                "type": "Представник юридичної особи",
-                "step": 1
-            },
-            {
-                "id": 6,
-                "type": "Представник іноземної юридичної особи",
-                "step": 1
-            },
-            {
-                "id": 7,
-                "type": "Я фізична особа-підприємець",
-                "step": 1
-            }
-        ]
-    }
+    currentOptions: null,
+    selection: null
 }
 
 export default (state = initState, action) => {
@@ -62,7 +26,8 @@ export default (state = initState, action) => {
         case handleNext:
             return {
                 ...state,
-                activeStep: state.activeStep + 1
+                activeStep: state.activeStep + 1,
+                selection: null
             }
         case handleBack:
             return {
@@ -74,7 +39,22 @@ export default (state = initState, action) => {
                 ...state,
                 activeStep: state.activeStep = 0
             }
-        // ----- OTHER LOGIC -----
+        // ----- API -----
+        case setSelection:
+            return {
+                ...state,
+                selection: action.payload
+            }
+        case getOptions:
+            return {
+                ...state,
+                currentOptions: action.payload,
+                selection: null
+            }
+        // ----- ERROR -----
+        case handleError: 
+            console.error(action.payload)
+            return state
         default:
             return state
     }

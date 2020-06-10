@@ -6,6 +6,7 @@
     background-color: colors.$cream_white;
     display: grid;
     grid-template-rows: 108px 1fr 50px;
+    position: relative;
     &__content {
         // background-color: orange;
         display: flex;

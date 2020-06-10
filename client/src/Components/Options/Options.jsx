@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelection } from '../../Redux/actions/botOneActions'
 import {
     makeStyles,
     Radio,
@@ -18,12 +20,15 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Options = ({ currentOptions }) => {
+    const dispatch = useDispatch()
+    const { selection } = useSelector(state => state.botOneReducer)
+
     const classes = useStyles()
-    const [value, setValue] = useState('female')
+    // const [value, setValue] = useState('female')
 
     const handleChange = (event) => {
-        setValue(event.target.value)
-        console.log(event.target.value)
+        // setValue(event.target.value)
+        dispatch(setSelection(event.target.value))
     };
 
     return (
@@ -36,7 +41,7 @@ const Options = ({ currentOptions }) => {
                             fontWeight: 'bold'
                         }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, commodi! Suscipit delectus excepturi nobis alias!</p>
                 </FormLabel>
-                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                <RadioGroup aria-label="gender" name="gender1" value={selection} onChange={handleChange}>
                     {
                         currentOptions.options.map((item, index) => (
                             <FormControlLabel 
