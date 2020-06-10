@@ -3,6 +3,8 @@ import { Box } from '@material-ui/core'
 import style from './BotOne.module.scss'
 import BotSteps from './BotSteps'
 import BotStepsControls from './BotStepsControls'
+import Options from '../../Components/Options/Options'
+import Result from '../../Components/Result/Result'
 
 const BotOne = () => {
     return (
@@ -15,7 +17,8 @@ const BotOne = () => {
                     boxShadow={1}
                     className={style.botone__contentbox}
                 >
-                    
+                    <Options />   
+                    {/* <Result />            */}
                 </Box>
             </div>
             <div style={{ 

@@ -1,7 +1,5 @@
 import { botOneActions } from '../actions'
-const { 
-    getSteps,
-    getStepContent,
+const {
     handleNext,
     handleBack,
     handleReset
@@ -20,10 +18,6 @@ const initState = {
 export default (state = initState, action) => {
     switch (action.type) {
         // ----- STEPPER -----
-        case getSteps:
-            return state.steps
-        case getStepContent:
-            return state
         case handleNext:
             return {
                 ...state,

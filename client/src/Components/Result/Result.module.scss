@@ -1,0 +1,15 @@
+@use '../../Utils/fonts.scss' as fonts;
+
+.result {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fonts.$font_vollkorn;
+    min-height: 100%;
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #3f51b5;
+    }
+}
