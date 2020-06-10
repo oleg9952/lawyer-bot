@@ -1,19 +1,20 @@
 import { botOneActions } from './index'
 
-export const handleNext = () => {
-    return {
+export const handleNext = () => dispatch => {
+    
+    dispatch({
         type: botOneActions.handleNext
-    }
+    })
 }
 
-export const handleBack = () => {
-    return {
+export const handleBack = () => dispatch => {
+    dispatch({
         type: botOneActions.handleBack
-    }
+    })
 }
 
-export const handleReset = () => {
-    return {
+export const handleReset = () => dispatch => {
+    dispatch({
         type: botOneActions.handleReset
-    }
+    })
 }

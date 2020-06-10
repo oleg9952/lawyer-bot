@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const Options = () => {
+const Options = ({ currentOptions }) => {
     const classes = useStyles()
     const [value, setValue] = useState('female')
 
@@ -37,8 +37,16 @@ const Options = () => {
                         }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, commodi! Suscipit delectus excepturi nobis alias!</p>
                 </FormLabel>
                 <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                    <FormControlLabel className={classes.item} value="Опція 1" control={<Radio color="primary" />} label="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, commodi! Suscipit delectus excepturi nobis alias!Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, commodi! Suscipit delectus excepturi nobis alias!Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, commodi! Suscipit delectus excepturi nobis alias!" />
-                    <FormControlLabel className={classes.item} value="Інше" control={<Radio color="primary" />} label="Інше" />
+                    {
+                        currentOptions.options.map((item, index) => (
+                            <FormControlLabel 
+                                key={index}
+                                className={classes.item} 
+                                value={`${item.id}`} 
+                                control={<Radio color="primary" />} label={`${item.type}`} 
+                            />
+                        ))
+                    }
                 </RadioGroup>
             </FormControl>
         </div>
