@@ -6,10 +6,10 @@ const { getData } = require('./functions')
 router.get('/sudovyi-zbir', async (req, res, next) => {
     try {
         const apiData = await readFile(1)
-        res.send(getData(apiData, {
+        res.send(JSON.stringify(getData(apiData, {
             step: parseInt(req.query.step),
             selection: req.query.selection
-        }))
+        })))
     } catch (error) {
         next(error)
     }

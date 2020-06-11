@@ -9,7 +9,7 @@
     "init": "concurrently \"npm run init:client\" \"npm run init:server\"",
     "dev:client": "cd client && npm start",
     "dev:server": "cd server && npm run dev",
-    "build:client": "cd client && npm run build",
+    "build:client": "cd client && npm i && npm run build",
     "build:server": "cd server && npm i",
     "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
     "start": "cd server && npm start"
