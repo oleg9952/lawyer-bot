@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleOneActive, setOneVisited } from '../../../Redux/actions/homaActions'
 import style from './BotOne.module.scss'
 import { BotContent } from '../index'
 
@@ -12,28 +14,28 @@ const content = {
 }
 
 const BotOne = ({ currentPage }) => {
-    const [ active, setActive ] = useState(false)
-    const [ visited, setVisited ] = useState(false)
+    const dispatch = useDispatch()
+    const { oneActive, oneVisited } = useSelector(state => state.homeReducer)
 
     useEffect(() => {
         if (currentPage === 1) {
-            setActive(true)
-            setVisited(true)
-        } else {
-            setActive(false)
+            dispatch(toggleOneActive(true))
+            dispatch(setOneVisited())
+            return
         }
+        dispatch(toggleOneActive(false))
     }, [currentPage])
 
     return (
         <div className={`
             ${style.botone}
-            ${active ? style.active : ''}
+            ${oneActive ? style.active : ''}
         `}>
             <div className={style.botone__bg}></div>
             <BotContent 
                 {...content} 
                 order={0} 
-                visited={visited} 
+                visited={oneVisited} 
             />
         </div>
     )

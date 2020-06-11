@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleTwoActive, setTwoVisited } from '../../../Redux/actions/homaActions'
 import style from './BotTwo.module.scss'
 import { BotContent } from '../index'
 
@@ -12,28 +14,28 @@ const content = {
 }
 
 const BotTwo = ({ currentPage }) => {
-    const [ active, setActive ] = useState(false)
-    const [ visited, setVisited ] = useState(false)
+    const dispatch = useDispatch()
+    const { twoActive, twoVisited } = useSelector(state => state.homeReducer)
 
     useEffect(() => {
         if (currentPage === 2) {
-            setActive(true)
-            setVisited(true)
+            dispatch(toggleTwoActive(true))
+            dispatch(setTwoVisited())
         } else {
-            setActive(false)
+            dispatch(toggleTwoActive(false))
         }
     }, [currentPage])
 
     return (
         <div className={`
             ${style.bottwo}
-            ${active ? style.active : ''}
+            ${twoActive ? style.active : ''}
         `}>
             <div className={style.bottwo__bg}></div>
             <BotContent 
                 {...content}
                 order={1}
-                visited={visited}
+                visited={twoVisited}
             />
         </div>
     )

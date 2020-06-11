@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import botReducer from './botReducer'
+import botOneReducer from './botOneReducer'
+import homeReducer from './homeReducers'
 
 export default combineReducers({
-    botReducer
+    botOneReducer,
+    homeReducer
 })

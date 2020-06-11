@@ -1,17 +1,26 @@
-@use '../../Utils/mixins.scss' as mixins;
-@use '../../Utils//colors.scss' as colors;
+@use '../../Utils/styles/mixins.scss' as mixins;
+@use '../../Utils/styles/colors.scss' as colors;
 
 .botone {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: colors.$cream_white;
-    // @include mixins.imgBG('/assets/botone/botone_page_bg.jpg');
-    h1 {
-        text-align: center;
-        font-size: 50px;
-        color: #000;
-        font-weight: bold;
+    display: grid;
+    grid-template-rows: 108px 1fr 50px;
+    position: relative;
+    &__content {
+        // background-color: orange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .botone__contentbox {
+            width: 768px;
+            height: 550px;
+            background-color: #fff;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        .botone__contentbox::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

@@ -1,8 +1,9 @@
-@use '../../../Utils/mixins.scss' as mixins;
+@use '../../../Utils/styles/mixins.scss' as mixins;
 
 .bottwo {
     min-height: 100vh;
-    filter: invert(100%);
+    // filter: invert(100%);
+    filter: grayscale(100%);
     transition: 1s;
     position: relative;    
     display: flex;
@@ -16,10 +17,15 @@
         left: 0;
         z-index: 0;
         @include mixins.imgBG('/assets/home/bottwo/bottwo_bg.jpg');
-        filter: brightness(60%);
+        filter: brightness(30%);
+        transition: 1s;
     }
 }
 
 .bottwo.active {
-    filter: invert(0%);
+    // filter: invert(0%);
+    filter: grayscale(0%);
+    .bottwo__bg {
+        filter: brightness(60%);
+    }
 }
