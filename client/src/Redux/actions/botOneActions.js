@@ -1,20 +1,29 @@
 import { botOneActions } from './index'
 import { sudZbitAPI } from '../../Utils/js/api'
 
-export const handleNext = (step, selection) => async dispatch => {
+export const handleNext = (step, selection, stepper) => async dispatch => {
     if (step === 3) {
         dispatch({
-            type: botOneActions.handleNext
+            type: botOneActions.handleNext,
+            payload: stepper
         })
     } else {
         try {
             const res = await sudZbitAPI(step, selection)
+            if (res.final) {
+                dispatch({
+                    type: botOneActions.handleNext,
+                    payload: 3
+                })
+            } else {
+                dispatch({
+                    type: botOneActions.handleNext,
+                    payload: stepper
+                })
+            }
             dispatch({
                 type: botOneActions.getOptions,
                 payload: res
-            })
-            dispatch({
-                type: botOneActions.handleNext
             })
         } catch (error) {
             dispatch({

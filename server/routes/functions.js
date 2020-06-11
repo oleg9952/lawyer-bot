@@ -40,6 +40,7 @@ module.exports.getData = (apiData, { step, selection }) => {
                 result = {
                     final: true,
                     step: 3,
+                    zbir: false,
                     message: 'Ви звільнені від сплати'
                 }
             } else if (selection === pozevach) {
@@ -48,8 +49,69 @@ module.exports.getData = (apiData, { step, selection }) => {
                     step: 2,
                     options: apiData.conditional[selection]
                 }
+            } else if (selection === zayavnik) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === zasudzheni) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === mistsevaVlada) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === fopCred) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === viiskovi) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === viiskovyi) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === vyborets) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === osobaZPsykhichnymZakhvoriuvanniam) {
+                result = {
+                    final: false,
+                    step: 2,
+                    options: apiData.conditional[selection]
+                }
+            } else if (selection === 'other') {
+                result = {
+                    final: true,
+                    step: 3,
+                    zbir: true,
+                    message: 'Потрібно сплатити'
+                }
+            } else {
+                result = {
+                    final: true,
+                    step: 3,
+                    zbir: false,
+                    message: 'Ви звільнені від сплати'
+                }
             }
-
             return result
         default:
             return apiData

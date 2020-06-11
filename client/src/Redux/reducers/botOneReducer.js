@@ -26,7 +26,7 @@ export default (state = initState, action) => {
         case handleNext:
             return {
                 ...state,
-                activeStep: state.activeStep + 1,
+                activeStep: action.payload,
                 selection: null
             }
         case handleBack:

@@ -36,15 +36,13 @@ const BotStepsControls = () => {
     const goNext = () => {
         switch (currentOptions.step) {
             case 0:
-                dispatch(handleNext(1, selection))
+                dispatch(handleNext(1, selection, 1))
                 break
             case 1:
-                dispatch(handleNext(2, selection))
+                dispatch(handleNext(2, selection, 2))
                 break
             case 2:
-                if (currentOptions.final) {
-                    dispatch(handleNext(3, selection))
-                }
+                dispatch(handleNext(2, selection, 3))
                 break
             default:
                 break

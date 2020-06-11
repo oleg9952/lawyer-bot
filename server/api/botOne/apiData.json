@@ -196,7 +196,7 @@
                 "zbir": false
             },
             {
-                "id": 10,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -212,7 +212,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -228,7 +228,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -244,7 +244,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -260,7 +260,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -276,7 +276,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -292,7 +292,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -308,7 +308,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
@@ -324,7 +324,7 @@
                 "zbir": false
             },
             {
-                "id": 2,
+                "id": "other",
                 "type": "Інше",
                 "url": null,
                 "step": 3,
