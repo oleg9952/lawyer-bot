@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { setSelection } from '../../Redux/actions/botOneActions'
 import {
     makeStyles,
@@ -21,15 +21,17 @@ const useStyles = makeStyles(() => ({
 
 const Options = ({ currentOptions }) => {
     const dispatch = useDispatch()
-    const { selection } = useSelector(state => state.botOneReducer)
 
     const classes = useStyles()
-    // const [value, setValue] = useState('female')
+    const [value, setValue] = useState(null)
 
     const handleChange = (event) => {
-        // setValue(event.target.value)
-        dispatch(setSelection(event.target.value))
+        setValue(event.target.value)
     };
+
+    useEffect(() => {
+        setValue(null)
+    }, [currentOptions])
 
     return (
         <div className={classes.holder}>
@@ -38,16 +40,18 @@ const Options = ({ currentOptions }) => {
                     <p style={{ 
                             color: '#000', 
                             marginBottom: '15px',
-                            fontWeight: 'bold'
+                            fontWeight: 'bold',
+                            display: 'none'
                         }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, commodi! Suscipit delectus excepturi nobis alias!</p>
                 </FormLabel>
-                <RadioGroup aria-label="gender" name="gender1" value={selection} onChange={handleChange}>
+                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
                     {
                         currentOptions.options.map((item, index) => (
                             <FormControlLabel 
                                 key={index}
                                 className={classes.item} 
-                                value={`${item.id}`} 
+                                value={`${index}`}
+                                onClick={() => dispatch(setSelection(item.id))} 
                                 control={<Radio color="primary" />} label={`${item.type}`} 
                             />
                         ))

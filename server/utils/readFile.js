@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const BOT_ONE = '../api/botOne/apiData.json'
+const BOT_ONE = './api/botOne/apiData.json'
 const BOT_TWO = '../api/botOne/apiData.json'
 
 module.exports.readFile = (bot) => {

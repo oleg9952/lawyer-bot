@@ -15,7 +15,7 @@ const BotOne = () => {
 
     useEffect(() => {
         dispatch(getOptions(0, null))
-    }, [])
+    }, [dispatch])
 
     return (
         <div className={style.botone}>
@@ -29,7 +29,8 @@ const BotOne = () => {
                 >
                     {
                         currentOptions ?
-                        currentOptions.final ? <Result /> : <Options currentOptions={currentOptions} />
+                        currentOptions.final ? 
+                        <Result currentOptions={currentOptions}/> : <Options currentOptions={currentOptions} />
                         : <Spinner />
                     }
                 </Box>

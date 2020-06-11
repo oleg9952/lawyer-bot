@@ -1,23 +1,70 @@
-import { serv } from '../../config'
 import { botOneActions } from './index'
+import { sudZbitAPI } from '../../Utils/js/api'
 
-export const handleNext = () => dispatch => {
-    
-    dispatch({
-        type: botOneActions.handleNext
-    })
+export const handleNext = (step, selection) => async dispatch => {
+    if (step === 3) {
+        dispatch({
+            type: botOneActions.handleNext
+        })
+    } else {
+        try {
+            const res = await sudZbitAPI(step, selection)
+            dispatch({
+                type: botOneActions.getOptions,
+                payload: res
+            })
+            dispatch({
+                type: botOneActions.handleNext
+            })
+        } catch (error) {
+            dispatch({
+                type: botOneActions.handleError,
+                payload: `Error getting data: ${error}`
+            })
+        }
+    }
 }
 
-export const handleBack = () => dispatch => {
-    dispatch({
-        type: botOneActions.handleBack
-    })
+export const handleBack = (step, selection) => async dispatch => {
+    try {
+        const res = await sudZbitAPI(step, selection)
+        dispatch({
+            type: botOneActions.handleBack
+        })
+        dispatch({
+            type: botOneActions.getOptions,
+            payload: res
+        })
+    } catch (error) {
+        dispatch({
+            type: botOneActions.handleError,
+            payload: `Error getting data: ${error}`
+        })
+    }
 }
 
-export const handleReset = () => dispatch => {
-    dispatch({
-        type: botOneActions.handleReset
-    })
+export const handleReset = (step, selection, leave) => async dispatch => {
+    if (leave) {
+        dispatch({
+            type: botOneActions.handleReset
+        })
+    } else {  
+        try {
+            const res = await sudZbitAPI(step, selection)
+            dispatch({
+                type: botOneActions.handleReset
+            })
+            dispatch({
+                type: botOneActions.getOptions,
+                payload: res
+            })
+        } catch (error) {
+            dispatch({
+                type: botOneActions.handleError,
+                payload: `Error getting data: ${error}`
+            })
+        }
+    }
 }
 
 export const setSelection = (id) => {
@@ -29,13 +76,11 @@ export const setSelection = (id) => {
 
 export const getOptions = (step, selection) => async dispatch => {
     try {
-        const req = await fetch(`${serv.DEV}/api/sudovyi-zbir`)
-        const res = await req.json()
-        console.log(res)
-        // dispatch({
-        //     type: botOneActions.getOptions,
-        //     payload: res
-        // })
+        const res = await sudZbitAPI(step, selection)
+        dispatch({
+            type: botOneActions.getOptions,
+            payload: res
+        })
     } catch (error) {
         dispatch({
             type: botOneActions.handleError,

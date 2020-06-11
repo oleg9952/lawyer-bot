@@ -1,10 +1,10 @@
 import React from 'react'
 import style from './Result.module.scss'
 
-const Result = () => {
+const Result = ({ currentOptions }) => {
     return (
         <div className={style.result}>
-            <h2>Ви звільненні від сплати</h2>
+            <h2>{ currentOptions.message }</h2>
         </div>
     )
 }

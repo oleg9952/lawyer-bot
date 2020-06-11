@@ -32,12 +32,14 @@ export default (state = initState, action) => {
         case handleBack:
             return {
                 ...state,
-                activeStep: state.activeStep - 1
+                activeStep: state.activeStep - 1,
+                selection: null
             }
         case handleReset:
             return {
                 ...state,
-                activeStep: state.activeStep = 0
+                activeStep: state.activeStep = 0,
+                selection: null
             }
         // ----- API -----
         case setSelection:
@@ -49,7 +51,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 currentOptions: action.payload,
-                selection: null
+                activeStep: action.payload.final ? 3 : state.activeStep
             }
         // ----- ERROR -----
         case handleError: 
