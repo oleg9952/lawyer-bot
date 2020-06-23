@@ -97,3 +97,9 @@ export const getOptions = (step, selection) => async dispatch => {
         })
     }
 }
+
+export default {
+    reset: handleReset,
+    back: handleBack,
+    next: handleNext
+}

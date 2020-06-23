@@ -2,11 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Button, makeStyles } from '@material-ui/core'
 import spravy from '../../Redux/actions/botOneActions'
-import {
-    handleNext,
-    handleBack,
-    handleReset
-} from '../../Redux/actions/botTwoActions'
+import documents from '../../Redux/actions/botTwoActions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,7 +46,19 @@ const BotStepsControls = ({
                     break
             }
         } else {
-            console.log('bot two')
+            switch (currentOptions.step) {
+                case 0:
+                    dispatch(documents.next(1, selection, 1))
+                    break
+                case 1:
+                    dispatch(documents.next(2, selection, 2))
+                    break
+                case 2:
+                    dispatch(documents.next(2, selection, 3))
+                    break
+                default:
+                    break
+            }
         }
     }
 
@@ -69,7 +77,18 @@ const BotStepsControls = ({
                     break
             }
         } else {
-
+            switch (currentOptions.step) {
+                case 0:
+                    break
+                case 1:
+                    dispatch(documents.back(0, selection))
+                    break
+                case 2:
+                    dispatch(documents.back(1, selection))
+                    break
+                default:
+                    break
+            }
         }
     }
 
@@ -77,7 +96,7 @@ const BotStepsControls = ({
         if (bot === 1) {
             dispatch(spravy.reset(0, null))
         } else {
-
+            dispatch(documents.reset(0, null))
         }
     }
 
@@ -86,7 +105,7 @@ const BotStepsControls = ({
             if (bot === 1) {
                 dispatch(spravy.reset(0, null))
             } else {
-    
+                dispatch(documents.reset(0, null))
             }
         }
     }, [dispatch])

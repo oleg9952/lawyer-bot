@@ -63,10 +63,11 @@ module.exports.getDataDocuments = (apiData, { step, selection }) => {
                 result = {
                     final: true,
                     step: 3,
-                    zbir: true,
-                    message: 'Потрібно сплатити'              
+                    zbir: false,
+                    message: 'Ви звільнені від сплати'              
                 }
             }
+            return result
         default:
             return apiData
     }
