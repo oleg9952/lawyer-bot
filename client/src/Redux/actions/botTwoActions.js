@@ -1,33 +1,33 @@
-import { botOneActions } from './index'
+import { botTwoActions } from './index'
 import { sudZbitAPI } from '../../Utils/js/api'
 
 export const handleNext = (step, selection, stepper) => async dispatch => {
     if (step === 3) {
         dispatch({
-            type: botOneActions.handleNext,
+            type: botTwoActions.handleNext,
             payload: stepper
         })
     } else {
         try {
-            const res = await sudZbitAPI(step, selection, 1)
+            const res = await sudZbitAPI(step, selection, 2)
             if (res.final) {
                 dispatch({
-                    type: botOneActions.handleNext,
+                    type: botTwoActions.handleNext,
                     payload: 3
                 })
             } else {
                 dispatch({
-                    type: botOneActions.handleNext,
+                    type: botTwoActions.handleNext,
                     payload: stepper
                 })
             }
             dispatch({
-                type: botOneActions.getOptions,
+                type: botTwoActions.getOptions,
                 payload: res
             })
         } catch (error) {
             dispatch({
-                type: botOneActions.handleError,
+                type: botTwoActions.handleError,
                 payload: `Error getting data: ${error}`
             })
         }
@@ -36,17 +36,17 @@ export const handleNext = (step, selection, stepper) => async dispatch => {
 
 export const handleBack = (step, selection) => async dispatch => {
     try {
-        const res = await sudZbitAPI(step, selection, 1)
+        const res = await sudZbitAPI(step, selection, 2)
         dispatch({
-            type: botOneActions.handleBack
+            type: botTwoActions.handleBack
         })
         dispatch({
-            type: botOneActions.getOptions,
+            type: botTwoActions.getOptions,
             payload: res
         })
     } catch (error) {
         dispatch({
-            type: botOneActions.handleError,
+            type: botTwoActions.handleError,
             payload: `Error getting data: ${error}`
         })
     }
@@ -55,21 +55,21 @@ export const handleBack = (step, selection) => async dispatch => {
 export const handleReset = (step, selection, leave) => async dispatch => {
     if (leave) {
         dispatch({
-            type: botOneActions.handleReset
+            type: botTwoActions.handleReset
         })
     } else {  
         try {
-            const res = await sudZbitAPI(step, selection, 1)
+            const res = await sudZbitAPI(step, selection, 2)
             dispatch({
-                type: botOneActions.handleReset
+                type: botTwoActions.handleReset
             })
             dispatch({
-                type: botOneActions.getOptions,
+                type: botTwoActions.getOptions,
                 payload: res
             })
         } catch (error) {
             dispatch({
-                type: botOneActions.handleError,
+                type: botTwoActions.handleError,
                 payload: `Error getting data: ${error}`
             })
         }
@@ -78,21 +78,21 @@ export const handleReset = (step, selection, leave) => async dispatch => {
 
 export const setSelection = (id) => {
     return {
-        type: botOneActions.setSelection,
+        type: botTwoActions.setSelection,
         payload: id
     }
 }
 
 export const getOptions = (step, selection) => async dispatch => {
     try {
-        const res = await sudZbitAPI(step, selection, 1)
+        const res = await sudZbitAPI(step, selection, 2)
         dispatch({
-            type: botOneActions.getOptions,
+            type: botTwoActions.getOptions,
             payload: res
         })
     } catch (error) {
         dispatch({
-            type: botOneActions.handleError,
+            type: botTwoActions.handleError,
             payload: `Error getting data: ${error}`
         })
     }

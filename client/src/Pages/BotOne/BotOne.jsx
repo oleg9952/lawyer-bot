@@ -3,15 +3,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getOptions } from '../../Redux/actions/botOneActions'
 import { Box } from '@material-ui/core'
 import style from './BotOne.module.scss'
-import BotSteps from './BotSteps'
-import BotStepsControls from './BotStepsControls'
 import Options from '../../Components/Options/Options'
 import Result from '../../Components/Result/Result'
 import Spinner from '../../Components/Spinner/Spinner'
+import BotSteps from '../../Components/Stepper/BotSteps'
+import BotStepsControls from '../../Components/Stepper/BotStepsControls'
 
 const BotOne = () => {
     const dispatch = useDispatch()
-    const { currentOptions } = useSelector(state => state.botOneReducer)
+    const { 
+        currentOptions, 
+        steps, 
+        activeStep, 
+        selection 
+    } = useSelector(state => state.botOneReducer)
 
     useEffect(() => {
         dispatch(getOptions(0, null))
@@ -20,7 +25,10 @@ const BotOne = () => {
     return (
         <div className={style.botone}>
             <div>
-                <BotSteps />
+                <BotSteps 
+                    steps={steps}
+                    activeStep={activeStep}
+                />
             </div>
             <div className={style.botone__content}>
                 <Box
@@ -40,7 +48,12 @@ const BotOne = () => {
                 justifyContent: 'center',
                 alignItems: 'center'
              }}>
-                <BotStepsControls />
+                <BotStepsControls 
+                    activeStep={activeStep}
+                    steps={steps}
+                    currentOptions={currentOptions}
+                    selection={selection}
+                />
             </div>
         </div>
     )

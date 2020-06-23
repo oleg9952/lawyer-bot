@@ -24,7 +24,7 @@ const BotTwo = ({ currentPage }) => {
         } else {
             dispatch(toggleTwoActive(false))
         }
-    }, [currentPage])
+    }, [currentPage, dispatch])
 
     return (
         <div className={`

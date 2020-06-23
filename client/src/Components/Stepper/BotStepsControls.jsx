@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Button, makeStyles } from '@material-ui/core'
 import {
     handleNext,
@@ -22,14 +22,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const BotStepsControls = () => {
+const BotStepsControls = ({
+    activeStep,
+    steps,
+    currentOptions,
+    selection
+}) => {
     const dispatch = useDispatch()
-    const { 
-        activeStep, 
-        steps,
-        currentOptions,
-        selection
-    } = useSelector(state => state.botOneReducer)
 
     const classes = useStyles()
 
