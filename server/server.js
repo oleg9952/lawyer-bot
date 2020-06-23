@@ -9,7 +9,7 @@ server.use((req, res, next) => {
     next()
 })
 
-server.use('/api', require('./routes/botOne'))
+server.use('/api', require('./routes/bots'))
 
 server.use(express.json())
 server.use(express.urlencoded({ extended: false }))

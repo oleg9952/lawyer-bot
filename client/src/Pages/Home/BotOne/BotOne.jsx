@@ -24,7 +24,7 @@ const BotOne = ({ currentPage }) => {
             return
         }
         dispatch(toggleOneActive(false))
-    }, [currentPage])
+    }, [currentPage, dispatch])
 
     return (
         <div className={`

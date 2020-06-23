@@ -6,20 +6,18 @@ import {
     StepLabel,
     Box
 } from '@material-ui/core'
-import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
-    },
+    },  
     instructions: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     }
 }));
 
-const BotSteps = () => {
-    const { steps, activeStep } = useSelector(state => state.botOneReducer)
+const BotSteps = ({ steps, activeStep }) => {
     const classes = useStyles();
 
     return (

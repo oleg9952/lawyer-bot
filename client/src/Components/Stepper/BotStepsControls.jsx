@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Button, makeStyles } from '@material-ui/core'
-import {
-    handleNext,
-    handleBack,
-    handleReset
-} from '../../Redux/actions/botOneActions'
+import spravy from '../../Redux/actions/botOneActions'
+import documents from '../../Redux/actions/botTwoActions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,51 +19,94 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const BotStepsControls = () => {
+const BotStepsControls = ({
+    activeStep,
+    steps,
+    currentOptions,
+    selection,
+    bot
+}) => {
     const dispatch = useDispatch()
-    const { 
-        activeStep, 
-        steps,
-        currentOptions,
-        selection
-    } = useSelector(state => state.botOneReducer)
 
     const classes = useStyles()
 
     const goNext = () => {
-        switch (currentOptions.step) {
-            case 0:
-                dispatch(handleNext(1, selection, 1))
-                break
-            case 1:
-                dispatch(handleNext(2, selection, 2))
-                break
-            case 2:
-                dispatch(handleNext(2, selection, 3))
-                break
-            default:
-                break
+        if (bot === 1) {
+            switch (currentOptions.step) {
+                case 0:
+                    dispatch(spravy.next(1, selection, 1))
+                    break
+                case 1:
+                    dispatch(spravy.next(2, selection, 2))
+                    break
+                case 2:
+                    dispatch(spravy.next(2, selection, 3))
+                    break
+                default:
+                    break
+            }
+        } else {
+            switch (currentOptions.step) {
+                case 0:
+                    dispatch(documents.next(1, selection, 1))
+                    break
+                case 1:
+                    dispatch(documents.next(2, selection, 2))
+                    break
+                case 2:
+                    dispatch(documents.next(2, selection, 3))
+                    break
+                default:
+                    break
+            }
         }
     }
 
     const goBack = () => {
-        switch (currentOptions.step) {
-            case 0:
-                break
-            case 1:
-                dispatch(handleBack(0, selection))
-                break
-            case 2:
-                dispatch(handleBack(1, selection))
-                break
-            default:
-                break
+        if (bot === 1) {
+            switch (currentOptions.step) {
+                case 0:
+                    break
+                case 1:
+                    dispatch(spravy.back(0, selection))
+                    break
+                case 2:
+                    dispatch(spravy.back(1, selection))
+                    break
+                default:
+                    break
+            }
+        } else {
+            switch (currentOptions.step) {
+                case 0:
+                    break
+                case 1:
+                    dispatch(documents.back(0, selection))
+                    break
+                case 2:
+                    dispatch(documents.back(1, selection))
+                    break
+                default:
+                    break
+            }
+        }
+    }
+
+    const handleReset = () => {
+        if (bot === 1) {
+            dispatch(spravy.reset(0, null))
+        } else {
+            dispatch(documents.reset(0, null))
         }
     }
 
     useEffect(() => {
         return () => {
-            dispatch(handleReset(null, null, true))
+            if (bot === 1) {
+                dispatch(spravy.reset(0, null))
+            } else {
+                dispatch(documents.reset(0, null))
+            }
         }
     }, [dispatch])
 
@@ -75,7 +115,7 @@ const BotStepsControls = () => {
             {activeStep === steps.length ? (
                 <div>
                     <Button 
-                        onClick={() => dispatch(handleReset(0, null))}
+                        onClick={handleReset}
                         variant="contained"
                     >Очистити</Button>
                 </div>
