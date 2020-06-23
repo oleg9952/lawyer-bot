@@ -53,6 +53,7 @@ const BotOne = () => {
                     steps={steps}
                     currentOptions={currentOptions}
                     selection={selection}
+                    bot={1}
                 />
             </div>
         </div>

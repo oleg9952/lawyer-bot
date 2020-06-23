@@ -13,9 +13,9 @@ const {
     predstavnykDitei,
     invalidViiny,
     zakhystInteresiv
- } = require('./conditionals');
+ } = require('../actions/spravyActions');
 
-module.exports.getData = (apiData, { step, selection }) => {
+module.exports.getDataSpravy = (apiData, { step, selection }) => {
     switch (step) {
         case 0:
             return {

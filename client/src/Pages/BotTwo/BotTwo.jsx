@@ -53,6 +53,7 @@ const BotTwo = () => {
                     steps={steps}
                     currentOptions={currentOptions}
                     selection={selection}
+                    bot={2}
                 />
             </div>
         </div>

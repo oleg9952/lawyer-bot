@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Button, makeStyles } from '@material-ui/core'
+import spravy from '../../Redux/actions/botOneActions'
 import {
     handleNext,
     handleBack,
     handleReset
-} from '../../Redux/actions/botOneActions'
+} from '../../Redux/actions/botTwoActions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,46 +27,67 @@ const BotStepsControls = ({
     activeStep,
     steps,
     currentOptions,
-    selection
+    selection,
+    bot
 }) => {
     const dispatch = useDispatch()
 
     const classes = useStyles()
 
     const goNext = () => {
-        switch (currentOptions.step) {
-            case 0:
-                dispatch(handleNext(1, selection, 1))
-                break
-            case 1:
-                dispatch(handleNext(2, selection, 2))
-                break
-            case 2:
-                dispatch(handleNext(2, selection, 3))
-                break
-            default:
-                break
+        if (bot === 1) {
+            switch (currentOptions.step) {
+                case 0:
+                    dispatch(spravy.next(1, selection, 1))
+                    break
+                case 1:
+                    dispatch(spravy.next(2, selection, 2))
+                    break
+                case 2:
+                    dispatch(spravy.next(2, selection, 3))
+                    break
+                default:
+                    break
+            }
+        } else {
+            console.log('bot two')
         }
     }
 
     const goBack = () => {
-        switch (currentOptions.step) {
-            case 0:
-                break
-            case 1:
-                dispatch(handleBack(0, selection))
-                break
-            case 2:
-                dispatch(handleBack(1, selection))
-                break
-            default:
-                break
+        if (bot === 1) {
+            switch (currentOptions.step) {
+                case 0:
+                    break
+                case 1:
+                    dispatch(spravy.back(0, selection))
+                    break
+                case 2:
+                    dispatch(spravy.back(1, selection))
+                    break
+                default:
+                    break
+            }
+        } else {
+
+        }
+    }
+
+    const handleReset = () => {
+        if (bot === 1) {
+            dispatch(spravy.reset(0, null))
+        } else {
+
         }
     }
 
     useEffect(() => {
         return () => {
-            dispatch(handleReset(null, null, true))
+            if (bot === 1) {
+                dispatch(spravy.reset(0, null))
+            } else {
+    
+            }
         }
     }, [dispatch])
 
@@ -74,7 +96,7 @@ const BotStepsControls = ({
             {activeStep === steps.length ? (
                 <div>
                     <Button 
-                        onClick={() => dispatch(handleReset(0, null))}
+                        onClick={handleReset}
                         variant="contained"
                     >Очистити</Button>
                 </div>

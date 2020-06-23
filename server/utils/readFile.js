@@ -1,7 +1,7 @@
 const fs = require('fs')
 
-const BOT_ONE = './api/botOne/apiData.json'
-const BOT_TWO = '../api/botOne/apiData.json'
+const BOT_ONE = './apiData/apiDataOne.json'
+const BOT_TWO = './apiData/apiDataTwo.json'
 
 module.exports.readFile = (bot) => {
     return new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ module.exports.readFile = (bot) => {
                 })
                 break
             case 2:
-                fs.readFile(BOT_ONE, 'utf8', (err, data) => {
+                fs.readFile(BOT_TWO, 'utf8', (err, data) => {
                     if (err) {
                         reject(`Error reading API file: ${err}`)
                     } else {
