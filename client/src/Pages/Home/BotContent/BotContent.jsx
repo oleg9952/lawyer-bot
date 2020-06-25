@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { makeStyles, Button } from '@material-ui/core'
+import { makeStyles, Button, useMediaQuery } from '@material-ui/core'
 import routes from '../../../Routes'
 import style from './BotContent.module.scss'
 
@@ -22,6 +22,7 @@ const BotContent = ({
     bot
 }) => {
     const classes = useStyles()
+    const mediaMatches = useMediaQuery('(max-width: 768px)')
 
     return (
         <div className={`
@@ -48,7 +49,9 @@ const BotContent = ({
                         ` : ''}
                     `}
                 >{ text }</p>
-                <Link to={routes[bot].path}>
+                <Link to={routes[bot].path}
+                    className={style.btn__link}
+                >
                     <Button
                         className={`
                             ${classes.btn}
@@ -68,10 +71,13 @@ const BotContent = ({
                 </Link>
             </div>
             <div className={`
-                ${style.botcontent__column}
-                ${order ? style.left : ''}
-            `}
-                style={{ order: order ? '1' : '2' }}
+                    ${style.botcontent__column}
+                    ${order ? style.left : ''}
+                `}
+                style={{ 
+                    order: order ? '1' : '2',
+                    display: mediaMatches ? 'none' : 'block'
+                }}
             >
                 <div className={style.botcontent__imgs}>
                     <div 

@@ -8,7 +8,6 @@
     grid-template-rows: 108px 1fr 50px;
     position: relative;
     &__content {
-        // background-color: orange;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,6 +20,26 @@
         }
         .botone__contentbox::-webkit-scrollbar {
             display: none;
+        }
+    }
+}
+
+@media screen and (max-height: 768px) {
+    .botone {
+        &__content {
+            .botone__contentbox {
+                height: 450px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .botone {
+        &__content {
+            .botone__contentbox {
+                width: 100%;
+            }
         }
     }
 }
