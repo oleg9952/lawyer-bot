@@ -94,3 +94,19 @@
         right: auto;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .botcontent {
+        grid-template-columns: 1fr;
+        &__column {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            .btn__link {
+                width: 200px;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}

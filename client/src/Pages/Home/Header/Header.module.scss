@@ -50,3 +50,44 @@
         transform: translateY(0px);
     }
 }
+
+@media screen and (max-width: 760px) {
+    .header {
+        &__body {
+            padding: 0 10px;
+            .header__title {
+                font-size: 30px;
+            }
+            .header__subtitle {
+                font-size: 20px;
+                width: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        &__body {
+            width: 100%;
+            .header__title {
+                font-size: 30px;
+                width: auto;
+            }
+            .header__subtitle {
+                font-size: 20px;
+                width: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 354px) {
+    .header {
+        &__body {
+            .header__title {
+                line-height: 45px;
+            }
+        }
+    }
+}

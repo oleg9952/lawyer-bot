@@ -108,7 +108,7 @@ const BotStepsControls = ({
                 dispatch(documents.reset(0, null))
             }
         }
-    }, [dispatch])
+    }, [dispatch, bot])
 
     return (
         <div className={classes.root}>
@@ -143,6 +143,7 @@ const BotStepsControls = ({
                                     color="primary" 
                                     onClick={goNext}
                                     className={classes.btn}
+                                    disabled={!selection}
                                 >Готово</Button>
                             ) : (
                                 <Button 
